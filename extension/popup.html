@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PhishPulse</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="phishpulse-popup">
+  <div class="phishpulse-header">
+    <img src="icons/icon48.png" alt="PhishPulse" class="phishpulse-logo">
+    <h1>PhishPulse</h1>
+    <span class="phishpulse-version">v2.0</span>
+  </div>
+  
+  <div id="current-page-section">
+    <h2>Current Page</h2>
+    <div id="url-display" class="phishpulse-url"></div>
+    <button id="scan-btn" class="phishpulse-btn phishpulse-btn-primary">
+      Scan Current Page
+    </button>
+    <div id="scan-result" class="phishpulse-result hidden">
+      <div class="phishpulse-score-ring">
+        <span id="risk-score">--</span>
+      </div>
+      <div id="risk-classification" class="phishpulse-classification">--</div>
+      <div id="risk-indicators" class="phishpulse-indicators"></div>
+    </div>
+  </div>
+  
+  <div class="phishpulse-section">
+    <h2>Recent Scans</h2>
+    <div id="recent-scans" class="phishpulse-recent">
+      <p class="phishpulse-empty">No recent scans</p>
+    </div>
+  </div>
+  
+  <div class="phishpulse-section">
+    <h2>Settings</h2>
+    <div class="phishpulse-setting">
+      <label for="api-url">API URL:</label>
+      <input type="text" id="api-url" placeholder="http://localhost:8000">
+    </div>
+    <div class="phishpulse-setting">
+      <label>
+        <input type="checkbox" id="auto-scan"> Auto-scan emails
+      </label>
+    </div>
+    <button id="save-settings" class="phishpulse-btn phishpulse-btn-secondary">
+      Save Settings
+    </button>
+  </div>
+  
+  <div class="phishpulse-footer">
+    <a href="#" id="clear-cache">Clear Cache</a>
+    <span>|</span>
+    <a href="http://localhost:8000/docs" target="_blank">API Docs</a>
+  </div>
+  
+  <script src="lib/browser-polyfill.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

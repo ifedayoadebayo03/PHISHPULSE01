@@ -1,0 +1,33 @@
+scikit-learn==1.3.0           # Isolation Forest, Feature Hashing
+opencv-python-headless==4.8.0 # ORB, pHash (no GUI deps for server)
+fastapi==0.103.0               # Async API backend
+uvicorn[standard]==0.23.0      # ASGI server
+sqlalchemy==2.0.20             # ORM
+python-multipart==0.0.6        # File uploads
+reportlab==3.6.12              # PDF forensics
+matplotlib==3.7.2              # Charts
+playwright==1.37.0             # Screenshots
+numpy==1.24.3                  # Memory-efficient arrays
+pandas==2.0.3                  # Data processing
+requests==2.31.0               # Threat intel APIs
+joblib==1.3.2                  # Model serialization
+python-whois==0.8.0            # Domain intelligence
+pydantic==2.3.0                # Data validation
+pydantic-settings==2.0.3       # Settings management
+aiofiles==23.2.0               # Async file operations
+python-jose[cryptography]==3.3.0  # JWT tokens
+passlib[bcrypt]==1.7.4         # Password hashing
+pytest==7.4.0                  # Testing
+pytest-asyncio==0.21.0         # Async testing
+httpx==0.24.1                  # HTTP client
+pillow==10.0.0                 # Image processing
+imagehash==4.3.1               # Perceptual hashing
+python-Levenshtein==0.21.1     # String similarity
+validators==0.21.0             # URL validation
+dnspython==2.4.0               # DNS queries
+tldextract==3.4.4              # TLD extraction
+aiosqlite==0.19.0              # Async SQLite
+asyncio-whois==1.0.1           # Async WHOIS
+email-validator==2.0.0         # Email validation
+beautifulsoup4==4.12.2         # HTML parsing
+lxml==4.9.3                    # XML/HTML parsing
