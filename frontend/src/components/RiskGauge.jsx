@@ -1,60 +1,71 @@
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
+import { motion } from 'framer-motion';
 
-function RiskGauge({ score, size = 200 }) {
-  // Determine color based on score
-  const getColor = () => {
-    if (score <= 30) return '#28a745' // Safe - Green
-    if (score <= 60) return '#ffc107' // Warning - Yellow
-    if (score <= 85) return '#dc3545' // Danger - Red
-    return '#721c24' // Critical - Dark Red
-  }
-
-  // Data for gauge
-  const data = [
-    { value: score },
-    { value: 100 - score }
-  ]
-
-  const COLORS = [getColor(), '#e5e7eb']
+export default function RiskGauge({ score, size = 200 }) {
+  const radius = (size - 12) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (score / 100) * circumference;
+  
+  const getColor = (s) => {
+    if (s <= 30) return '#00ff88';
+    if (s <= 60) return '#ffb800';
+    return '#ff2a2a';
+  };
+  
+  const strokeColor = getColor(score);
+  const fontSize = size > 100 ? 'text-4xl' : size > 60 ? 'text-lg' : 'text-xs';
 
   return (
-    <div className="relative" style={{ width: size, height: size * 0.6 }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="100%"
-            startAngle={180}
-            endAngle={0}
-            innerRadius={size * 0.5}
-            outerRadius={size * 0.6}
-            paddingAngle={0}
-            dataKey="value"
-            stroke="none"
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index]} />
-            ))}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
+    <div className="relative flex items-center justify-center" style={{ width: size, height: size }}>
+      <svg width={size} height={size} className="transform -rotate-90 absolute">
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="rgba(255,255,255,0.05)"
+          strokeWidth={size > 100 ? 8 : 4}
+        />
+        <motion.circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke={strokeColor}
+          strokeWidth={size > 100 ? 8 : 4}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          initial={{ strokeDashoffset: circumference }}
+          animate={{ strokeDashoffset }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          style={{ filter: size > 100 ? `drop-shadow(0 0 10px ${strokeColor}40)` : 'none' }}
+        />
+      </svg>
       
-      {/* Score Display */}
-      <div 
-        className="absolute inset-0 flex flex-col items-center justify-end pb-4"
-        style={{ top: '40%' }}
-      >
-        <span 
-          className="text-4xl font-bold"
-          style={{ color: getColor() }}
+      <div className="relative z-10 flex flex-col items-center justify-center">
+        <motion.span
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5 }}
+          className={`font-bold ${fontSize}`}
+          style={{ color: strokeColor, fontFamily: 'Space Grotesk, sans-serif', lineHeight: 1 }}
         >
           {score}
-        </span>
-        <span className="text-sm text-gray-500">/ 100</span>
+        </motion.span>
+        {size > 100 && (
+          <span className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#8b8b9a' }}>
+            {score <= 30 ? 'Clean' : score <= 60 ? 'Suspicious' : score <= 85 ? 'Malicious' : 'Critical'}
+          </span>
+        )}
       </div>
-    </div>
-  )
-}
 
-export default RiskGauge
+      {score > 60 && size > 100 && (
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0, 0.3] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute inset-0 rounded-full"
+          style={{ border: `2px solid ${strokeColor}`, filter: 'blur(4px)' }}
+        />
+      )}
+    </div>
+  );
+}

@@ -1,19 +1,22 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-void: #0a0a0f;
+  --color-obsidian: #14141f;
+  --color-slate: #1e1e2e;
+  --color-cyan: #00f0ff;
+  --color-amber: #ffb800;
+  --color-crimson: #ff2a2a;
+  --color-emerald: #00ff88;
+  --color-ghost: #8b8b9a;
+  --color-frost: #e4e4f0;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
 
 body {
-  @apply bg-gray-50 text-gray-900;
-}
-
-.card {
-  @apply bg-white rounded-lg shadow-md p-6;
-}
-
-.btn-primary {
-  @apply bg-phishpulse-navy text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors;
-}
-
-.btn-secondary {
-  @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors;
+  background-color: var(--color-void);
+  color: var(--color-frost);
+  font-family: var(--font-sans);
 }

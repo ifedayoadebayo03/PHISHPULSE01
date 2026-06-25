@@ -1,61 +1,26 @@
 {
   "manifest_version": 3,
-  "name": "PhishPulse - Phishing Detection",
+  "name": "PhishPulse Detector",
   "version": "2.0.0",
-  "description": "Real-time multi-modal phishing detection using AI",
-  "author": "PhantomSecDy Research Initiative",
-  "homepage_url": "https://github.com/phantomsecdy/phishpulse",
-  
-  "permissions": [
-    "activeTab",
-    "storage",
-    "scripting"
-  ],
-  
-  "host_permissions": [
-    "http://localhost:8000/*",
-    "https://mail.google.com/*",
-    "https://outlook.live.com/*",
-    "https://outlook.office.com/*"
-  ],
-  
-  "background": {
-    "service_worker": "background.js"
-  },
-  
-  "content_scripts": [
-    {
-      "matches": [
-        "https://mail.google.com/*",
-        "https://outlook.live.com/*",
-        "https://outlook.office.com/*"
-      ],
-      "js": ["lib/browser-polyfill.js", "content.js"],
-      "css": ["styles.css"],
-      "run_at": "document_idle"
-    }
-  ],
-  
+  "description": "Real-time phishing detection for email and links",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["http://localhost:8000/*"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
-    },
-    "default_title": "PhishPulse - Click to scan"
-  },
-  
-  "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
-  },
-  
-  "web_accessible_resources": [
-    {
-      "resources": ["icons/*", "styles.css"],
-      "matches": ["<all_urls>"]
     }
-  ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*", "https://outlook.live.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }
