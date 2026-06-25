@@ -509,9 +509,9 @@ uname -m  # x86_64 or aarch64
 ```
 
 ### Step 1: Clone Repository
-
+https://github.com/ifedayoadebayo03/PHISHPULSE01.git
 ```bash
-git clone https://github.com/phantomsecdy/phishpulse.git
+git clone https://github.com/ifedayoadebayo03/PHISHPULSE01.git
 cd phishpulse
 ```
 
@@ -1221,7 +1221,7 @@ SOFTWARE.
 
 **Project:** PhishPulse v2.0  
 **Organization:** PhantomSecDy Research Initiative  
-**Repository:** https://github.com/phantomsecdy/phishpulse  
+**Repository:** https://github.com/ifedayoadebayo03/PHISHPULSE01.git
 
 
 For bug reports, feature requests, or security disclosures, please open an issue on the GitHub repository.
