@@ -1222,7 +1222,7 @@ SOFTWARE.
 **Project:** PhishPulse v2.0  
 **Organization:** PhantomSecDy Research Initiative  
 **Repository:** https://github.com/phantomsecdy/phishpulse  
-**Issues:** https://github.com/phantomsecdy/phishpulse/issues  
+
 
 For bug reports, feature requests, or security disclosures, please open an issue on the GitHub repository.
 
